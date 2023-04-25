@@ -21,12 +21,6 @@ set hlsearch
 set incsearch
 noremap <esc><esc> :noh<return><esc>
 
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {}<ESC>i
-inoremap < <><ESC>i
-inoremap ' ''<ESC>i
-inoremap " ""<ESC>i
 set ts=4
 set softtabstop=4
 set shiftwidth=4
@@ -43,13 +37,15 @@ Plugin 'VundleVim/Vundle.vim'
 " 同时安装两个插件
 Plugin 'vim-airline/vim-airline' 
 Plugin 'tpope/vim-fugitive'
+Plugin 'preservim/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
 
 
 " Add your plugins here
 
 call vundle#end()            " required
 filetype plugin indent on    " required
-"
+""" vim-airline
 " 显示文件类型
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -71,3 +67,35 @@ let g:airline#extensions#filename#enabled = 1
 "
 " 显示当前光标所在位置在文件中的百分比
 let g:airline#extensions#percent#enabled = 1
+
+""" nerdcommenter
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+"
+" " Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+"
+" " Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+"
+" " Align line-wise comment delimiters flush left instead of following code
+" indentation
+let g:NERDDefaultAlign = 'left'
+"
+"
+" " Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/*','right': '*/' } }
+"
+" " Allow commenting and inverting empty lines (useful when commenting a
+" region)
+let g:NERDCommentEmptyLines = 1
+"
+" " Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+"
+" " Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+
+""" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
