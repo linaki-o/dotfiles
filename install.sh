@@ -11,7 +11,7 @@ elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
     fi
 fi
 # Define software to be installed
-software_command=("vim" "bash" "tmux")
+software_command=("vim" "bash" "tmux" "git")
 
 # Loop through software commands
 for command in "${software_command[@]}"
@@ -45,6 +45,7 @@ ln -s $(pwd)/.tmux.conf ~/.tmux.conf
 source ~/.bashrc
 
 # Install vim plugins
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PlugInstall +qall
 
 # load tmux conf
